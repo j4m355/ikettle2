@@ -55,10 +55,15 @@ func main() {
 	shell.Println("iKettle 2.0 shell")
 
 	pwd, cwdErr := os.Getwd()
+
 	if cwdErr != nil {
 		shell.Println("Error:", cwdErr)
 		return
 	}
+	else {
+		shell.Println("CWD:", pwd)
+	}
+
 
 	// display welcome info.
 	
