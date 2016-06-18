@@ -52,23 +52,15 @@ func main() {
 	// create new shell.
 	// by default, new shell includes 'exit', 'help' and 'clear' commands.
 	shell := ishell.New()
-	// display welcome info.
 	shell.Println("iKettle 2.0 shell")
 
-	var getProgramDir = func() {
-		pwd, err := osext.ExecutableFolder()
-	    if err != nil {
-	        shell.Println(err)
-	        return
-	    } else {
-	    	return pwd
-	    }	    
-	}
-	
+	pwd, err := osext.ExecutableFolder()
+    if err != nil {
+        shell.Println(err)
+    } 
 
 	var settings settings
 	var loadSettings = func() {
-		var pwd = getProgramDir()
 
 		b, err := ioutil.ReadFile(pwd + "/.ikettle")
 		if err == nil {
@@ -86,7 +78,6 @@ func main() {
 			shell.Println("Error saving .ikettle settings file:", err)
 			return
 		}
-		var pwd = getProgramDir()
 		err = ioutil.WriteFile(pwd + "/.ikettle", b, 0660)
 		if err != nil {
 			shell.Println("Error saving .ikettle settings file:", err)
