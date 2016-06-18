@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"strings"
 	"time"
-	"os"
+	"github.com/kardianos/osext"
 	"github.com/abiosoft/ishell"
 )
 
@@ -54,14 +54,11 @@ func main() {
 	shell := ishell.New()
 	shell.Println("iKettle 2.0 shell")
 
-	pwd, cwdErr := os.Getwd()
-
-	if cwdErr != nil {
-		shell.Println("Error:", cwdErr)
-		return
-	} else {
-		shell.Println("CWD:", pwd)
-	}
+	pwd, err := osext.ExecutableFolder()
+    if err != nil {
+        log.Fatal(err)
+    }
+    fmt.Println(pwd)
 
 
 	// display welcome info.
