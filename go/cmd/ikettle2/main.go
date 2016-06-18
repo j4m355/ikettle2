@@ -10,7 +10,7 @@ import (
 	"strconv"
 	"strings"
 	"time"
-
+	"os"
 	"github.com/abiosoft/ishell"
 )
 
@@ -52,13 +52,15 @@ func main() {
 	// create new shell.
 	// by default, new shell includes 'exit', 'help' and 'clear' commands.
 	shell := ishell.New()
+	pwd := os.Getwd()
 
 	// display welcome info.
 	shell.Println("iKettle 2.0 shell")
 
 	var settings settings
 	var loadSettings = func() {
-		b, err := ioutil.ReadFile("./.ikettle")
+
+		b, err := ioutil.ReadFile(pwd + "/.ikettle")
 		if err == nil {
 			err = json.Unmarshal(b, &settings)
 			if err != nil {
@@ -74,7 +76,7 @@ func main() {
 			shell.Println("Error saving .ikettle settings file:", err)
 			return
 		}
-		err = ioutil.WriteFile("./.ikettle", b, 0660)
+		err = ioutil.WriteFile(pwd + "/.ikettle", b, 0660)
 		if err != nil {
 			shell.Println("Error saving .ikettle settings file:", err)
 		}
