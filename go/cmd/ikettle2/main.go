@@ -55,9 +55,9 @@ func main() {
 	shell.Println("iKettle 2.0 shell")
 
 	pwd, err := osext.ExecutableFolder()
-    if err != nil {
-        shell.Println(err)
-    } 
+	if err != nil {
+		shell.Println(err)
+	} 
 
 	var settings settings
 	var loadSettings = func() {
