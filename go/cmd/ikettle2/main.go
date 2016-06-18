@@ -59,8 +59,7 @@ func main() {
 	if cwdErr != nil {
 		shell.Println("Error:", cwdErr)
 		return
-	}
-	else {
+	} else {
 		shell.Println("CWD:", pwd)
 	}
 
