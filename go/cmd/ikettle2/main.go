@@ -59,12 +59,11 @@ func main() {
 		pwd, err := osext.ExecutableFolder()
 	    if err != nil {
 	        shell.Println(err)
-	    }
-	    fmt.Println(pwd)
+	        return
+	    } else {
+	    	return pwd
+	    }	    
 	}
-
-
-	
 	
 
 	var settings settings
