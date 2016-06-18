@@ -52,10 +52,16 @@ func main() {
 	// create new shell.
 	// by default, new shell includes 'exit', 'help' and 'clear' commands.
 	shell := ishell.New()
+	shell.Println("iKettle 2.0 shell")
+
 	pwd, cwdErr := os.Getwd()
+	if cwdErr != nil {
+		shell.Println("Error:", cwdErr)
+		return
+	}
 
 	// display welcome info.
-	shell.Println("iKettle 2.0 shell")
+	
 
 	var settings settings
 	var loadSettings = func() {
