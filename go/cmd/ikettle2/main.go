@@ -56,7 +56,7 @@ func main() {
 
 	pwd, err := osext.ExecutableFolder()
     if err != nil {
-        log.Fatal(err)
+        shell.Println(err)
     }
     fmt.Println(pwd)
 
